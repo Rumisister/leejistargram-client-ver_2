@@ -1,0 +1,82 @@
+@mixin activeBtn {
+  background-color: blue;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 7px;
+  font-size: 17px;
+  color: white;
+  font-weight: bold;
+  margin: 15px 0px;
+  cursor: pointer;
+}
+
+.login {
+  margin: 0 auto;
+  margin-top: 70px;
+  width: 450px;
+  height: 500px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  background-color: white;
+
+  .login_logo {
+    font-size: 50px;
+    font-family: "Lobster", cursive;
+    padding: 20px 60px;
+    text-align: center;
+  }
+
+  .login_input {
+    display: flex;
+    flex-direction: column;
+    margin: 0px 40px;
+
+    .inputId {
+      padding: 15px 10px;
+      margin-bottom: 15px;
+      border-radius: 7px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: #fafafa;
+      font-size: 17px;
+    }
+
+    .inputPw {
+      padding: 15px 10px;
+      margin-bottom: 15px;
+      border-radius: 7px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      background-color: #fafafa;
+      font-size: 17px;
+    }
+
+    .active {
+      @include activeBtn;
+    }
+
+    .unactive {
+      @include activeBtn;
+      opacity: 0.3;
+    }
+
+    button:disabled {
+      background-color: #c4e1fc;
+    }
+  }
+
+  .forget_pw {
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+  }
+
+  .forgetPwLink {
+    text-decoration-line: none;
+  }
+  .signupBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 75px;
+  }
+  .signupLink {
+    text-decoration-line: none;
+  }
+}
