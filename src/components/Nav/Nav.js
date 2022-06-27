@@ -1,12 +1,12 @@
-import React from "react";
-import "./Nav.scss";
-import { useNavigate } from "react-router-dom";
+import React from 'react';
+import './Nav.scss';
+import { useNavigate } from 'react-router-dom';
 
 function Nav() {
   const navigate = useNavigate();
 
   const goToAddFeed = () => {
-    navigate("/addfeed-hayoung");
+    navigate('/addfeed');
   };
 
   return (
@@ -24,30 +24,30 @@ function Nav() {
         </h1>
 
         <div className="gnb-search-wrapper">
-          <i className="fa-solid fa-magnifying-glass" aria-hidden></i>
+          <i className="fa-solid fa-magnifying-glass" aria-hidden />
           <input className="gnb-search-input" type="text" placeholder="검색" />
         </div>
 
         <div className="gnb-button-group">
           <button className="gnb-button button-add" onClick={goToAddFeed}>
-            <i class="fa-regular fa-square-plus"></i>
+            <i class="fa-regular fa-square-plus" />
           </button>
           <a
             className="gnb-button button-explore"
             href="#"
             aria-label="Explore some feeds"
-          ></a>
+          />
           <button
             className="gnb-button button-activities"
             type="button"
             aria-label="Open your activities modal"
-          ></button>
+          />
           <div className="gnb-profile-setting">
             <button
               className="gnb-button button-profile"
               type="button"
               aria-label="Open profile settings modal"
-            ></button>
+            />
           </div>
         </div>
       </nav>

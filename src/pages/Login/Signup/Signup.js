@@ -1,14 +1,14 @@
-import React, { useState } from "react";
-import "./Signup.scss";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import './Signup.scss';
+import { useNavigate } from 'react-router-dom';
 
 const Signup = () => {
   const navigate = useNavigate();
   const [userInfo, setUserInfo] = useState({
-    name: "",
-    pw: "",
-    email: "",
-    phone_number: "",
+    name: '',
+    pw: '',
+    email: '',
+    phone_number: '',
   });
 
   const onChange = e => {
@@ -20,9 +20,9 @@ const Signup = () => {
 
   const goToLogin = e => {
     e.preventDefault();
-    console.log(userInfo);
-    fetch("http://10.58.1.245:8000/users/signup", {
-      method: "POST",
+    // console.log(userInfo);
+    fetch('http://10.58.1.245:8000/users/signup', {
+      method: 'POST',
       body: JSON.stringify({
         email: userInfo.email,
         password: userInfo.pw,
@@ -32,11 +32,11 @@ const Signup = () => {
     })
       .then(response => response.json())
       .then(result => {
-        if (result.message === "SUCCESS") {
-          alert("축하");
-          navigate("/Login-hayoung");
+        if (result.message === 'SUCCESS') {
+          alert('축하');
+          navigate('/Login');
         } else {
-          alert("수고링~");
+          alert('수고링~');
         }
       });
   };

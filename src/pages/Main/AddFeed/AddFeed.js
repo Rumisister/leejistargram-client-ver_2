@@ -1,18 +1,18 @@
-import React, { useState } from "react";
-import "./AddFeed.scss";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import './AddFeed.scss';
+import { useNavigate } from 'react-router-dom';
 
 const AddFeed = () => {
   const navigate = useNavigate();
   const [feed, setFeed] = useState({
-    board: "",
+    board: '',
     image_url: [],
   });
 
   const onChange = e => {
     const { name, value } = e.target;
 
-    if (name === "board") {
+    if (name === 'board') {
       setFeed({
         ...feed,
         [name]: value,
@@ -25,26 +25,24 @@ const AddFeed = () => {
     }
   };
 
-  console.log(feed);
-
   const goToFeed = e => {
     const { board, image_url } = feed;
 
     e.preventDefault();
-    fetch("http://10.58.1.245:8000/postings/posting", {
-      method: "POST",
+    fetch('http://10.58.1.245:8000/postings/posting', {
+      method: 'POST',
       headers: {
-        Authorization: `${localStorage.getItem("token")}`,
+        Authorization: `${localStorage.getItem('token')}`,
       },
       body: JSON.stringify({ board, image_url }),
     })
       .then(res => res.json())
       .then(result => {
-        if (result.message === "SUCCESS") {
-          alert("게시 성!공!");
-          navigate("/main-hayoung");
+        if (result.message === 'SUCCESS') {
+          alert('게시 성!공!');
+          navigate('/main');
         } else {
-          alert("실패");
+          alert('실패');
         }
       });
   };

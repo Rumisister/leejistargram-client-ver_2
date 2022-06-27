@@ -1,8 +1,7 @@
-import Nav from "../../../components/Nav/Nav";
-import Feed from "./Feed/Feed";
-import MainRight from "../Main/MainRight/MainRight";
-
-import "./Main.scss";
+import Nav from '../../components/Nav/Nav';
+import Feed from './Feed/Feed';
+import MainRight from './MainRight/MainRight';
+import './Main.scss';
 
 const Main = () => {
   return (

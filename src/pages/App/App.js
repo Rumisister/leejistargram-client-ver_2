@@ -1,7 +1,7 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-import "./App.scss";
+import './App.scss';
 
 function App() {
   return (
@@ -13,10 +13,10 @@ function App() {
               <h1>Hayoung</h1>
             </li>
             <li className="page-item">
-              <Link to="/login-hayoung">Login</Link>
+              <Link to="/login">Login</Link>
             </li>
             <li className="page-item">
-              <Link to="/main-hayoung">Main</Link>
+              <Link to="/main">Main</Link>
             </li>
           </ul>
         </div>

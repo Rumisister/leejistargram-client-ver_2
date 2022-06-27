@@ -1,46 +1,46 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-import "./Login.scss";
+import './Login.scss';
 
 const Login = () => {
   const navigate = useNavigate();
-  const [user, setUser] = useState({ id: "", pw: "" });
+  const [user, setUser] = useState({ id: '', pw: '' });
   const [btnChange, setBtnChange] = useState(true);
 
   const goToMain = () => {
-    fetch("http://10.58.1.245:8000/users/login", {
-      method: "POST",
+    fetch('http://10.58.1.245:8000/users/login', {
+      method: 'POST',
       body: JSON.stringify({
         email: user.id,
         password: user.pw,
       }),
     })
-      .then((response) => response.json())
-      .then((result) => {
-        if (result.message === "SUCCESS") {
-          alert("축하");
-          localStorage.setItem("token", result.access_token);
-          navigate("/main-hayoung");
+      .then(response => response.json())
+      .then(result => {
+        if (result.message === 'SUCCESS') {
+          alert('축하');
+          localStorage.setItem('token', result.access_token);
+          navigate('/main');
         } else {
-          alert("수고");
-          navigate("/Signup-hayoung");
+          alert('수고');
+          navigate('/Signup');
         }
       });
   };
 
   const goToSignup = () => {
-    navigate("/Signup-hayoung");
+    navigate('/Signup');
   };
 
   const isValidation = () => {
-    const idValue = user.id.includes("@");
+    const idValue = user.id.includes('@');
     const pwValue = user.pw.length >= 5;
 
     idValue && pwValue ? setBtnChange(false) : setBtnChange(true);
   };
 
-  const onChange = (e) => {
+  const onChange = e => {
     setUser({
       ...user,
       [e.target.name]: e.target.value,
@@ -70,7 +70,7 @@ const Login = () => {
           onKeyUp={isValidation}
         />
         <button
-          className={!btnChange ? "active" : "unactive"}
+          className={!btnChange ? 'active' : 'unactive'}
           onClick={goToMain}
           disabled={btnChange}
         >
