@@ -1,0 +1,100 @@
+.feeds {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  margin-top: 60px;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+
+  .feedIdProfile {
+    display: flex;
+    justify-content: space-between;
+
+    .feedIdPhoto {
+      margin: 10px 0 10px 20px;
+      width: 40px;
+      border-radius: 100%;
+    }
+    .feedIdName {
+      margin-top: 25px;
+      margin-left: 10px;
+      font-weight: bold;
+    }
+    .dot_icon {
+      display: flex;
+      justify-content: end;
+      width: 20px;
+      height: 20px;
+      margin: 20px 10px 0 430px;
+    }
+  }
+
+  .feedPhoto {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+  }
+
+  .feed_icons {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px;
+
+    .isLiked {
+      .fa-solid {
+        color: tomato;
+        animation: heartAnimation;
+
+        @keyframes heartAnimation {
+          0% {
+            color: white;
+            transform: none;
+          }
+          50% {
+            color: tomato;
+            transform: scale(1.5);
+          }
+          100% {
+            color: white;
+            transform: none;
+          }
+        }
+      }
+    }
+
+    i {
+      font-size: 25px;
+      margin-right: 8px;
+    }
+  }
+}
+
+.like_token {
+  display: flex;
+  justify-content: flex-start;
+  margin: 5px 17px;
+  text-align: center;
+
+  .like_token_profile {
+    width: 20px;
+    height: 20px;
+    border-radius: 100%;
+  }
+  p {
+    margin-left: 5px;
+  }
+}
+
+.feed_text {
+  display: flex;
+  flex-direction: row;
+  margin-top: 12px;
+  font-size: 15px;
+
+  .feed_user_id {
+    margin-left: 18px;
+    margin-right: 5px;
+    font-weight: bold;
+  }
+}

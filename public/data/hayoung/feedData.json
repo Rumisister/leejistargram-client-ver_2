@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "userName": "ha0__",
+    "feedImg": "/images/hayoung/cat1.jpg",
+    "isLiked": true
+  },
+  {
+    "id": 2,
+    "userName": "Rumi_",
+    "feedImg": "/images/hayoung/Rumi.jpg",
+    "isLiked": false
+  },
+  {
+    "id": 3,
+    "userName": "xoxo",
+    "feedImg": "/images/hayoung/cat2.jpg",
+    "isLiked": false
+  }
+]

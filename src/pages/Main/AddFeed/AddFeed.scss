@@ -1,0 +1,17 @@
+.addFeed {
+  display: flex;
+  justify-content: center;
+
+  .feedText {
+    width: 400px;
+    height: 50px;
+    margin: 20px 40px;
+    font-size: 17px;
+  }
+  .feedSubmit {
+    width: 400px;
+    height: 50px;
+    margin: 20px 40px;
+    font-size: 17px;
+  }
+}

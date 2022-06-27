@@ -1,0 +1,33 @@
+.link-list {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .link-item {
+    width: 200px;
+    padding: 12px;
+    margin-bottom: 30px;
+    border: 1px solid #000;
+    border-radius: 8px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    .page-list {
+      text-align: center;
+
+      .page-title h1 {
+        margin-bottom: 10px;
+        font-size: 24px;
+        font-weight: 700;
+      }
+
+      .page-item {
+        margin-bottom: 12px;
+      }
+    }
+  }
+}
