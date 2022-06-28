@@ -1,16 +1,41 @@
 import React from 'react';
-import './Input.scss';
+import './InputBox.scss';
 
-const InputBox = ({ onChange, isValidation, inputs, index, dataName }) => {
+const InputBox = ({
+  isValidation,
+  btnChange,
+  goToSomething,
+  onChange,
+  user,
+  response,
+  isRequiredFieldFill,
+}) => {
+  const { inputs, btnContent } = response;
+
   return (
-    <input
-      className="inputBox"
-      placeholder={inputs[index].placeholder}
-      type={inputs[index].type}
-      onChange={onChange}
-      onKeyUp={isValidation}
-      name={dataName}
-    />
+    <div className="login_input">
+      {inputs.map(({ name, type, placeholder }, index) => {
+        return (
+          <input
+            key={index}
+            className="input_box"
+            placeholder={placeholder}
+            type={type}
+            value={user}
+            onChange={onChange}
+            name={name}
+          />
+        );
+      })}
+
+      <button
+        className={isRequiredFieldFill ? 'active' : 'unactive'}
+        onClick={goToSomething}
+        type="button"
+      >
+        {btnContent}
+      </button>
+    </div>
   );
 };
 

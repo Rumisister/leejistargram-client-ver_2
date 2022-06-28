@@ -1,0 +1,39 @@
+@mixin activeBtn {
+  background-color: blue;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 7px;
+  font-size: 17px;
+  color: white;
+  font-weight: bold;
+  margin: 15px 0px;
+  cursor: pointer;
+}
+
+.login_input {
+  display: flex;
+  flex-direction: column;
+  margin: 0px 40px;
+
+  .input_box {
+    padding: 15px 10px;
+    margin-bottom: 15px;
+    border-radius: 7px;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    background-color: #fafafa;
+    font-size: 17px;
+  }
+
+  .active {
+    @include activeBtn;
+  }
+
+  .unactive {
+    @include activeBtn;
+    opacity: 0.3;
+  }
+
+  // button:disabled {
+  //   background-color: #c4e1fc;
+  // }
+}
