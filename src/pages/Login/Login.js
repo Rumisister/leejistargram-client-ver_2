@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import InputBox from '../../components/InputBox/InputBox';
 import './Login.scss';
 
 const Login = () => {
@@ -8,25 +8,35 @@ const Login = () => {
   const [user, setUser] = useState({ id: '', pw: '' });
   const [btnChange, setBtnChange] = useState(true);
 
-  const goToMain = () => {
-    fetch('http://10.58.1.245:8000/users/login', {
-      method: 'POST',
-      body: JSON.stringify({
-        email: user.id,
-        password: user.pw,
-      }),
-    })
-      .then(response => response.json())
-      .then(result => {
-        if (result.message === 'SUCCESS') {
-          alert('축하');
-          localStorage.setItem('token', result.access_token);
-          navigate('/main');
-        } else {
-          alert('수고');
-          navigate('/Signup');
-        }
-      });
+  const inputs = [
+    {
+      name: 'id',
+      type: 'text',
+      placeholder: '전화번호, 사용자 이름 또는 이메일',
+    },
+    { name: 'pw', type: 'password', placeholder: '비밀번호' },
+  ];
+
+  const goToMain = e => {
+    // fetch('http://10.58.1.245:8000/users/login', {
+    //   method: 'POST',
+    //   body: JSON.stringify({
+    //     email: user.id,
+    //     password: user.pw,
+    //   }),
+    // })
+    //   .then(response => response.json())
+    //   .then(result => {
+    //     if (result.message === 'SUCCESS') {
+    //       alert('로그인 성공입니다.');
+    //       localStorage.setItem('token', result.access_token);
+    //       navigate('/main');
+    //     } else {
+    //       alert('아이디 혹은 비밀번호가 틀렸습니다.');
+    //        setUser({ id: '', pw: '' });
+    //     }
+    //   });
+    navigate('/main');
   };
 
   const goToSignup = () => {
@@ -41,37 +51,36 @@ const Login = () => {
   };
 
   const onChange = e => {
+    const { name, value } = e.target;
     setUser({
       ...user,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
 
   return (
     <div className="login">
-      <h1 className="login_logo">Westagram</h1>
+      <h1 className="login_logo">leejistagram</h1>
       <div className="login_input">
-        <input
-          type="text"
-          className="inputId"
-          placeholder="전화번호, 사용자 이름 또는 이메일"
-          name="id"
-          value={user.id}
-          onChange={onChange}
-          onKeyUp={isValidation}
-        />
-        <input
-          type="password"
-          className="inputPw"
-          placeholder="비밀번호"
-          name="pw"
-          value={user.pw}
-          onChange={onChange}
-          onKeyUp={isValidation}
-        />
+        {inputs.map((data, index) => {
+          return (
+            <InputBox
+              key={index}
+              index={index}
+              dataName={data.name}
+              type={data.type}
+              value={user}
+              onChange={e => {
+                onChange(e);
+              }}
+              isValidation={isValidation}
+              inputs={inputs}
+            />
+          );
+        })}
         <button
           className={!btnChange ? 'active' : 'unactive'}
-          onClick={goToMain}
+          onSubmit={goToMain}
           disabled={btnChange}
         >
           로그인
