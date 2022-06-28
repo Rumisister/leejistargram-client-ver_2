@@ -1,12 +1,12 @@
-import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import Login from "./pages/Login/Login";
-import Main from "./pages/Main/Main";
-import Signup from "./pages/Login/Signup/Signup";
-import AddFeed from "./pages/Main/AddFeed/AddFeed";
+import Login from './pages/Login/Login';
+import Main from './pages/Main/Main';
+import Signup from './pages/Login/Signup/Signup';
+import AddFeed from './pages/Main/AddFeed/AddFeed';
 
-import App from "./pages/App/App";
+import App from './pages/App/App';
 
 function Router() {
   return (
