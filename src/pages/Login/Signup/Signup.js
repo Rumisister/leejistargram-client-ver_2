@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useTransition } from 'react';
 import { useNavigate } from 'react-router-dom';
 import InputBox from '../../../components/InputBox/InputBox';
+import { RESPONSE_OBJECT } from '../RESPONSE_OBJECT';
 import './Signup.scss';
 
 const Signup = () => {
@@ -11,17 +12,8 @@ const Signup = () => {
     email: '',
     phone_number: '',
   });
-
-  const inputs = [
-    {
-      name: 'name',
-      type: 'text',
-      placeholder: '이름',
-    },
-    { name: 'email', type: 'email', placeholder: '이메일' },
-    { name: 'pw', type: 'password', placeholder: '비밀번호' },
-    { name: 'phone_number', type: 'tel', placeholder: '휴대폰번호' },
-  ];
+  const [signupBtnColor, setSignupBtnColor] = useState(false);
+  const [signupDisabled, setSignupDisabled] = useState(true);
 
   const onChange = e => {
     const { name, value } = e.target;
@@ -29,6 +21,20 @@ const Signup = () => {
       ...userInfo,
       [name]: value,
     });
+  };
+
+  const handleBtnChange = (boolean, color) => {
+    setSignupDisabled(boolean);
+    setSignupBtnColor(color);
+  };
+
+  const isRequiredFieldFill = () => {
+    userInfo.pw.length >= 8 &&
+    userInfo.email.includes('@') &&
+    userInfo.name.length > 1 &&
+    userInfo.phone_number.length >= 11
+      ? handleBtnChange(false, true)
+      : handleBtnChange(true, false);
   };
 
   const goToLogin = e => {
@@ -56,23 +62,17 @@ const Signup = () => {
 
   return (
     <form onSubmit={goToLogin} className="signUp">
-      {inputs.map((data, index) => {
-        return (
-          <InputBox
-            key={index}
-            index={index}
-            dataName={data.name}
-            type={data.type}
-            value={userInfo}
-            onChange={e => {
-              onChange(e);
-            }}
-            inputs={inputs}
-          />
-        );
-      })}
-
-      <button className="signupSubmit">제출하기</button>
+      <h1 className="login_logo">leejistagram</h1>
+      <InputBox
+        goToSomething={goToLogin}
+        handleInputValue={e => {
+          onChange(e);
+        }}
+        response={RESPONSE_OBJECT.signup}
+        btnChange={isRequiredFieldFill}
+        disabled={signupDisabled}
+        bgColor={signupBtnColor}
+      />
     </form>
   );
 };

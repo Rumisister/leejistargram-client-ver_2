@@ -2,18 +2,18 @@ import React from 'react';
 import './InputBox.scss';
 
 const InputBox = ({
-  isValidation,
-  btnChange,
   goToSomething,
-  onChange,
+  handleInputValue,
   user,
   response,
-  isRequiredFieldFill,
+  btnChange,
+  disabled,
+  bgColor,
 }) => {
   const { inputs, btnContent } = response;
 
   return (
-    <div className="login_input">
+    <div className="form_layout">
       {inputs.map(({ name, type, placeholder }, index) => {
         return (
           <input
@@ -22,16 +22,18 @@ const InputBox = ({
             placeholder={placeholder}
             type={type}
             value={user}
-            onChange={onChange}
+            onChange={handleInputValue}
             name={name}
+            onKeyUp={btnChange}
           />
         );
       })}
 
       <button
-        className={isRequiredFieldFill ? 'active' : 'unactive'}
+        className={bgColor ? 'active' : 'unactive'}
         onClick={goToSomething}
         type="button"
+        disabled={disabled}
       >
         {btnContent}
       </button>

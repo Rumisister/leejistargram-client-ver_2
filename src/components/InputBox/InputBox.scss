@@ -10,7 +10,7 @@
   cursor: pointer;
 }
 
-.login_input {
+.form_layout {
   display: flex;
   flex-direction: column;
   margin: 0px 40px;
@@ -33,7 +33,7 @@
     opacity: 0.3;
   }
 
-  // button:disabled {
-  //   background-color: #c4e1fc;
-  // }
+  button:disabled {
+    background-color: #c4e1fc;
+  }
 }

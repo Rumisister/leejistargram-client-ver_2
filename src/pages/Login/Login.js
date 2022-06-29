@@ -7,11 +7,14 @@ import './Login.scss';
 const Login = () => {
   const navigate = useNavigate();
   const [user, setUser] = useState({ id: '', pw: '' });
-  const [btnChange, setBtnChange] = useState(true);
+  // const [btnChange, setBtnChange] = useState(true);
 
-  const idValue = user.id.includes('@');
-  const pwValue = user.pw.length >= 5;
-  const isRequiredFieldFill = idValue && pwValue;
+  const [disabled, setDisabled] = useState(true);
+  const [bgColor, setBgColor] = useState(false);
+
+  // const idValue = user.id.includes('@');
+  // const pwValue = user.pw.length >= 5;
+  // const isRequiredFieldFill = idValue && pwValue;
 
   const goToMain = () => {
     // fetch('http://10.58.1.245:8000/users/login', {
@@ -39,11 +42,18 @@ const Login = () => {
     navigate('/Signup');
   };
 
-  const isValidation = () => {
-    isRequiredFieldFill ? setBtnChange(false) : setBtnChange(true);
+  const btnChange = (boolean, color) => {
+    setDisabled(boolean);
+    setBgColor(color);
   };
 
-  const onChange = e => {
+  const isValidation = () => {
+    user.pw.length >= 8 && user.id.includes('@')
+      ? btnChange(false, true)
+      : btnChange(true, false);
+  };
+
+  const handleInput = e => {
     const { name, value } = e.target;
     setUser({
       ...user,
@@ -56,14 +66,14 @@ const Login = () => {
       <div className="login">
         <h1 className="login_logo">leejistagram</h1>
         <InputBox
-          isValidation={isValidation}
-          btnChange={btnChange}
           goToSomething={goToMain}
-          onChange={e => {
-            onChange(e);
+          handleInputValue={e => {
+            handleInput(e);
           }}
-          isRequiredFieldFill={isRequiredFieldFill}
           response={RESPONSE_OBJECT.initial}
+          btnChange={isValidation}
+          disabled={disabled}
+          bgColor={bgColor}
         />
         <div className="forget_pw">
           <a className="forgetPwLink" href="#">
